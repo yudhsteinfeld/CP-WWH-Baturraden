@@ -131,7 +131,6 @@
             background-color: #D29F62 !important; /* Kuning (sesuai gambar subscribe) */
             border-color: #D29F62 !important; /* Kuning (sesuai gambar subscribe) */
             color: #000 !important; /* Warna teks hitam pekat */
-            font-weight: bold !important; /* Membuat teks lebih tebal */
             transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Transisi halus */
             position: relative; /* Penting untuk efek transform */
             z-index: 1; /* Pastikan tombol berada di atas elemen lain saat popup */
@@ -402,14 +401,14 @@
             <div class="col-lg-3 col-md-6 mb-5">
                 <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Follow Us</h4>
                 <div class="d-flex justify-content-start">
-                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="#"><i
+                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="https://twitter.com/login" target="_blank"><i
                                 class="fab fa-twitter"></i></a>
-                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="#"><i
+                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="https://www.facebook.com/BaturradenPalawi?locale=id_ID" target="_blank"><i
                                 class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="#"><i
+                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="https://www.linkedin.com/login" target="_blank"><i
                                 class="fab fa-linkedin-in"></i></a>
                     <a class="btn btn-lg btn-outline-light btn-lg-square"
-                                href="#"><i class="fab fa-instagram"></i></a>
+                                href="https://www.instagram.com/palawiresortbaturraden/" target="_blank"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
@@ -697,8 +696,8 @@
                         Halaman ini harus diakses dari halaman detail villa dengan pilihan kamar.
                     </div>
                 `;
-                 $('html, body').animate({scrollTop: alertContainer.offsetTop - 50}, 500, 'easeOutExpo');
-                 return;
+                $('html, body').animate({scrollTop: alertContainer.offsetTop - 50}, 500, 'easeOutExpo');
+                return;
             }
 
             updateMetode();
