@@ -292,6 +292,15 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="extraBed">Extra Bed (Opsional)</label>
+                                    <select class="form-control" id="extraBed">
+                                        <option value="0">Tidak Ada</option>
+                                        <option value="1">1 Extra Bed</option>
+                                        <option value="2">2 Extra Bed</option>
+                                        </select>
+                                    <small class="form-text text-muted">Pilih jumlah extra bed yang dibutuhkan.</small>
+                                </div>
+                                <div class="form-group">
                                     <label for="totalHargaDisplay" class="font-weight-bold">Total Harga Pemesanan</label>
                                     <div id="totalHargaDisplay" class="total-price-display"></div>
                                 </div>
@@ -461,6 +470,7 @@
         const checkoutInput = document.getElementById("checkout");
         const jumlahKamarInput = document.getElementById("jumlahKamar");
         const tamuInput = document.getElementById("tamu");
+        const extraBedSelect = document.getElementById("extraBed"); // NEW: Extra Bed Select
         const catatanInput = document.getElementById("catatan");
 
         const cashRadio = document.getElementById("cash");
@@ -617,6 +627,7 @@
         jumlahKamarInput.addEventListener("change", calculateTotalPriceAndValidate);
         tamuInput.addEventListener("change", calculateTotalPriceAndValidate);
         tamuInput.addEventListener("keyup", calculateTotalPriceAndValidate);
+        extraBedSelect.addEventListener("change", calculateTotalPriceAndValidate); // NEW: Extra Bed change listener
 
         cashRadio.addEventListener("change", updateMetode);
         qrisRadio.addEventListener("change", updateMetode);
@@ -726,6 +737,7 @@
             const jumlahMalamMenginap = Math.ceil((new Date(checkoutInput.value) - new Date(checkinInput.value)) / (1000 * 60 * 60 * 24));
             const totalHargaFinal = totalHargaDisplay.textContent;
             const jumlahTamuFinal = tamuInput.value;
+            const extraBedCount = extraBedSelect.value; // NEW: Get extra bed value
             const metode = qrisRadio.checked ? "QRIS" : "Cash";
             const guestType = iAmGuestRadio.checked ? "Saya tamu yang menginap" : "Saya memesan untuk orang lain";
 
@@ -755,7 +767,7 @@
                 Jumlah Kamar: <strong>${jumlahKamarDipilih}</strong><br>
                 Jenis Kamar: <strong>${jenisKamarDipilihText}</strong><br>
                 Jumlah Tamu: <strong>${jumlahTamuFinal}</strong><br>
-                Metode Pembayaran: <strong>${metode}</strong><br>
+                Extra Bed: <strong>${extraBedCount}</strong><br> Metode Pembayaran: <strong>${metode}</strong><br>
                 Total Harga: <strong>${totalHargaFinal}</strong><br>
                 Silakan tunggu konfirmasi dari admin.
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -786,6 +798,7 @@
             checkoutInput.required = false;
             jumlahKamarInput.required = false;
             tamuInput.required = false;
+            extraBedSelect.value = "0"; // Reset extra bed selection
 
             // Reset/hide dynamic content in the right panel
             resortNameDisplay.textContent = "Informasi Villa";
