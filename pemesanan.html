@@ -209,6 +209,11 @@
                                     <small class="form-text text-muted">Mohon gunakan hanya huruf (A-Z), tanpa gelar, karakter khusus, dan tanda baca.</small>
                                 </div>
 
+                                <div class="form-group" id="contactIDNumberGroup">
+                                    <label for="idNumber">Nomor ID (KTP, Passport, Kartu Pelajar)</label>
+                                    <input type="text" class="form-control" id="idNumber" required placeholder="Contoh: 33xxxxxxxxxxxxxx">
+                                    <small class="form-text text-muted">Masukkan nomor identitas resmi Anda.</small>
+                                </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="email">Email</label>
@@ -249,6 +254,11 @@
                                         <small class="form-text text-muted">Nama lengkap penginap sesuai KTP/ID Resmi.</small>
                                     </div>
 
+                                    <div class="form-group">
+                                        <label for="actualGuestIDNumber">Nomor ID Penginap (KTP, Passport, Kartu Pelajar)</label>
+                                        <input type="text" class="form-control" id="actualGuestIDNumber" placeholder="Contoh: 33xxxxxxxxxxxxxx">
+                                        <small class="form-text text-muted">Masukkan nomor identitas resmi penginap.</small>
+                                    </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="actualGuestEmail">Email Penginap</label>
@@ -453,6 +463,7 @@
         // --- Elemen Form ---
         const form = document.getElementById("formPemesanan");
         const namaInput = document.getElementById("nama");
+        const idNumberInput = document.getElementById("idNumber"); // NEW: ID Number input for contact
         const emailInput = document.getElementById("email");
         const mobileNumberInput = document.getElementById("mobileNumber");
         const iAmGuestRadio = document.getElementById("iAmGuest");
@@ -461,9 +472,9 @@
         // Actual Guest Details elements
         const actualGuestSection = document.getElementById("actualGuestSection");
         const actualGuestNamaInput = document.getElementById("actualGuestNama");
+        const actualGuestIDNumberInput = document.getElementById("actualGuestIDNumber"); // NEW: ID Number input for actual guest
         const actualGuestEmailInput = document.getElementById("actualGuestEmail");
         const actualGuestMobileNumberInput = document.getElementById("actualGuestMobileNumber");
-
 
         const checkinInput = document.getElementById("checkin");
         const checkoutInput = document.getElementById("checkout");
@@ -498,20 +509,38 @@
         const finalPriceDisplay = document.getElementById("finalPriceDisplay");
         const originalPriceRow = document.getElementById("originalPriceRow"); // untuk harga coret
 
-        // --- FUNGSI BARU: Mengatur tampilan detail penginap sebenarnya ---
+        // --- FUNGSI BARU: Mengatur tampilan detail penginap sebenarnya dan ID Number ---
         function toggleActualGuestDetails() {
+            const contactIDNumberGroup = document.getElementById("contactIDNumberGroup");
+
             if (bookingForAnotherRadio.checked) {
+                // When booking for another person:
+                // Hide contact person's ID field and make it not required
+                contactIDNumberGroup.style.display = "none";
+                idNumberInput.required = false;
+                idNumberInput.value = ""; // Clear value
+
+                // Show actual guest section and make actual guest ID field required
                 actualGuestSection.style.display = "block";
                 actualGuestNamaInput.required = true;
+                actualGuestIDNumberInput.required = true; // NEW: Make actual guest ID required
                 actualGuestEmailInput.required = true;
                 actualGuestMobileNumberInput.required = true;
             } else {
+                // When "I am the guest":
+                // Show contact person's ID field and make it required
+                contactIDNumberGroup.style.display = "block";
+                idNumberInput.required = true;
+
+                // Hide actual guest section and make actual guest ID field not required
                 actualGuestSection.style.display = "none";
                 actualGuestNamaInput.required = false;
+                actualGuestIDNumberInput.required = false; // NEW: Make actual guest ID not required
                 actualGuestEmailInput.required = false;
                 actualGuestMobileNumberInput.required = false;
                 // Clear values when hidden
                 actualGuestNamaInput.value = "";
+                actualGuestIDNumberInput.value = ""; // NEW: Clear actual guest ID value
                 actualGuestEmailInput.value = "";
                 actualGuestMobileNumberInput.value = "";
             }
@@ -669,6 +698,7 @@
                 selectedVillaRoomInfoDisplay.innerHTML = `<span class="text-danger">Informasi Villa dan Jenis Kamar tidak ditemukan.</span>`;
                 form.querySelector('button[type="submit"]').disabled = true;
                 namaInput.required = false;
+                idNumberInput.required = false; // NEW: Set required to false
                 emailInput.required = false;
                 mobileNumberInput.required = false;
                 checkinInput.required = false;
@@ -742,14 +772,19 @@
 
             // Get actual guest details if provided
             let actualGuestDetails = "";
-            if (bookingForAnotherRadio.checked) {
+            let contactIDNumberInfo = "";
+
+            if (iAmGuestRadio.checked) {
+                contactIDNumberInfo = `<br>Nomor ID: <strong>${idNumberInput.value}</strong>`;
+            } else if (bookingForAnotherRadio.checked) {
                 actualGuestDetails = `
                     <br><strong>Detail Penginap Sebenarnya:</strong><br>
                     Nama Penginap: <strong>${actualGuestNamaInput.value}</strong><br>
-                    Email Penginap: <strong>${actualGuestEmailInput.value}</strong><br>
+                    Nomor ID Penginap: <strong>${actualGuestIDNumberInput.value}</strong><br> Email Penginap: <strong>${actualGuestEmailInput.value}</strong><br>
                     Nomor Ponsel Penginap: <strong>+62${actualGuestMobileNumberInput.value}</strong>
                 `;
             }
+
 
             const alertBox = document.createElement("div");
             alertBox.className = "alert alert-success alert-dismissible fade show mt-3";
@@ -757,6 +792,7 @@
             alertBox.innerHTML = `
                 <strong>Pemesanan Villa ${currentVillaName} berhasil dikirim!</strong><br>
                 Nama: <strong>${namaInput.value}</strong><br>
+                ${contactIDNumberInfo}
                 Email: <strong>${emailInput.value}</strong><br>
                 Nomor Ponsel: <strong>+62${mobileNumberInput.value}</strong><br>
                 Tipe Tamu: <strong>${guestType}</strong>${actualGuestDetails}<br>
@@ -791,6 +827,7 @@
             totalHargaDisplay.textContent = "";
             form.querySelector('button[type="submit"]').disabled = true;
             namaInput.required = false;
+            idNumberInput.required = false; // NEW: Ensure this is reset
             emailInput.required = false;
             mobileNumberInput.required = false;
             checkinInput.required = false;
