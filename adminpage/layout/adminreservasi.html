@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palawis Risorsis - Reservation</title>
+
+    <link rel="stylesheet" href="/adminpage/css/adminreservasi.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="overlay" id="overlay"></div>
+
+    <div class="container">
+        <aside class="sidebar" id="sidebar">
+            <div class="logo">
+                <h1>Palawis Risorsis Logo</h1>
+                <p>Perhutanan Alam Wisata</p>
+                <i class="fas fa-times close-sidebar" id="closeSidebarBtn"></i>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li>
+                        <a href="#"><i class="fas fa-user-tie"></i> <span>User Admin</span></a>
+                    </li>
+                    <li>
+                        <a href="/adminpage/indexadmin.html"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a>
+                    </li>
+                    <li class="active"> <a href="reservation.html"><i class="fas fa-calendar-alt"></i> <span>Reservation</span></a>
+                    </li>
+                    <li>
+                        <a href="room.html"><i class="fas fa-bed"></i> <span>Room</span></a>
+                    </li>
+                    <li>
+                        <a href="financial.html"><i class="fas fa-dollar-sign"></i> <span>Financial</span></a>
+                    </li>
+                    <li>
+                        <a href="setting-user.html"><i class="fas fa-cog"></i> <span>Setting User</span></a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="navbar">
+                <i class="fas fa-bars menu-toggle" id="menuToggleBtn"></i>
+                
+                <div class="navbar-page-title">Reservation</div> <div class="reservation-header-right">
+                    <div class="search-bar-header">
+                        <input type="text" placeholder="Search Room">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="user-profile-info-header">
+                        <img src="images/user-avatar.png" alt="User Avatar" class="profile-pic-small">
+                        <span>Gilang Eka S</span>
+                        <span class="admin-role">Admin</span>
+                        <i class="fas fa-bell icon-button"></i>
+                        <i class="fas fa-cog icon-button"></i>
+                    </div>
+                </div>
+            </header>
+
+            <div class="reservation-content-area">
+                <div class="reservation-list-section card">
+                    <div class="section-header-reservation">
+                        <h3>Reservation List</h3>
+                        <div class="reservation-actions">
+                            <div class="action-item">
+                                <i class="fas fa-share-alt"></i> <span>Can Share</span>
+                            </div>
+                            <div class="action-item">
+                                <i class="fas fa-download"></i> <span>Download</span>
+                            </div>
+                            <div class="action-item date-filter">
+                                <input type="text" value="20 Jan - 20 Jan 2025" readonly>
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <button class="add-booking-btn"><i class="fas fa-plus"></i> Add Booking</button>
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Guest</th>
+                                    <th>Room</th>
+                                    <th>Request</th>
+                                    <th>Duration</th>
+                                    <th>Check In - Out</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td data-label="Guest">Malvin Hax</td>
+                                    <td data-label="Room">Standar</td>
+                                    <td data-label="Request">1223 Pillows</td>
+                                    <td data-label="Duration">2 Night</td>
+                                    <td data-label="Check In - Out">17 Juli - 19 Juli 2025</td>
+                                    <td data-label="Status"><span class="status-badge confirm">Confirm</span></td>
+                                    <td data-label="Actions">
+                                        <button class="action-btn icon-only"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn icon-only"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn icon-only cancel"><i class="fas fa-times"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Guest">Silas Booking</td>
+                                    <td data-label="Room">VIP</td>
+                                    <td data-label="Request">None</td>
+                                    <td data-label="Duration">2 Night</td>
+                                    <td data-label="Check In - Out">17 Juli - 19 Juli 2025</td>
+                                    <td data-label="Status"><span class="status-badge pending">Pending</span></td>
+                                    <td data-label="Actions">
+                                        <button class="action-btn icon-only"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn icon-only"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn icon-only cancel"><i class="fas fa-times"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Guest">Eliy Kuncoyo</td>
+                                    <td data-label="Room">Deluxe</td>
+                                    <td data-label="Request">None</td>
+                                    <td data-label="Duration">2 Night</td>
+                                    <td data-label="Check In - Out">17 Juli - 19 Juli 2025</td>
+                                    <td data-label="Status"><span class="status-badge confirm">Confirm</span></td>
+                                    <td data-label="Actions">
+                                        <button class="action-btn icon-only"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn icon-only"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn icon-only cancel"><i class="fas fa-times"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Guest">Verihas</td>
+                                    <td data-label="Room">Standard</td>
+                                    <td data-label="Request">Extra Bed</td>
+                                    <td data-label="Duration">1 Night</td>
+                                    <td data-label="Check In - Out">19 Juli - 20 Juli 2025</td>
+                                    <td data-label="Status"><span class="status-badge confirm">Confirm</span></td>
+                                    <td data-label="Actions">
+                                        <button class="action-btn icon-only"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn icon-only"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn icon-only cancel"><i class="fas fa-times"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Guest">Phara</td>
+                                    <td data-label="Room">Superior</td>
+                                    <td data-label="Request">None</td>
+                                    <td data-label="Duration">2 Night</td>
+                                    <td data-label="Status"><span class="status-badge pending">Pending</span></td>
+                                    <td data-label="Actions">
+                                        <button class="action-btn icon-only"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn icon-only"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn icon-only cancel"><i class="fas fa-times"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Guest">Kharismawan</td>
+                                    <td data-label="Room">Standard</td>
+                                    <td data-label="Request">None</td>
+                                    <td data-label="Duration">2 Night</td>
+                                    <td data-label="Status"><span class="status-badge confirm">Confirm</span></td>
+                                    <td data-label="Actions">
+                                        <button class="action-btn icon-only"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn icon-only"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn icon-only cancel"><i class="fas fa-times"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="booking-history-section card">
+                    <h3>Booking History</h3>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Booking ID</th>
+                                    <th>Booking Date</th>
+                                    <th>Type Room</th>
+                                    <th>No Room</th>
+                                    <th>Check In & Out</th>
+                                    <th>Guests</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td data-label="Image"><img src="images/room-image-1.jpg" alt="Room 1" class="room-thumbnail"></td>
+                                    <td data-label="Booking ID">#001</td>
+                                    <td data-label="Booking Date">13 Juli 2025</td>
+                                    <td data-label="Type Room">Standard</td>
+                                    <td data-label="No Room">001</td>
+                                    <td data-label="Check In & Out">15 Juli - 16 Juli 2025</td>
+                                    <td data-label="Guests">2 Guests</td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Image"><img src="images/room-image-2.jpg" alt="Room 2" class="room-thumbnail"></td>
+                                    <td data-label="Booking ID">#002</td>
+                                    <td data-label="Booking Date">14 Juli 2025</td>
+                                    <td data-label="Type Room">Standard</td>
+                                    <td data-label="No Room">004</td>
+                                    <td data-label="Check In & Out">19 Juli - 21 Juli 2025</td>
+                                    <td data-label="Guests">4 Guest</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/adminpage/js/adminreservasi.js"></script>
+</body>
+</html>
