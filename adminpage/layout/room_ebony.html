@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palawis Risorsis - Room Details</title> <link rel="stylesheet" href="../css/room_ebony.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="overlay" id="overlay"></div>
+
+    <div class="container">
+        <aside class="sidebar" id="sidebar">
+            <div class="logo">
+                <h1>Palawis Risorsis Logo</h1>
+                <p>Perhutanan Alam Wisata</p>
+                <i class="fas fa-times close-sidebar" id="closeSidebarBtn"></i>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li>
+                        <a href="../indexadmin.html"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a>
+                    </li>
+                    <li>
+                        <a href="adminreservasi.html"><i class="fas fa-calendar-alt"></i> <span>Reservation</span></a>
+                    </li>
+                    <li class="active">
+                        <a href="room.html"><i class="fas fa-bed"></i> <span>Room</span></a> </li>
+                    <li>
+                        <a href="#"><i class="fas fa-dollar-sign"></i> <span>Financial</span></a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="navbar">
+                <i class="fas fa-bars menu-toggle" id="menuToggleBtn"></i>
+                <div class="page-title">Room Details</div> <div class="navbar-right">
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search Room">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="user-info">
+                        <img src="https://via.placeholder.com/35" alt="User Avatar" class="user-avatar-circle">
+                        <div class="user-details">
+                            <span class="user-name">Gilang Eka S</span>
+                            <span class="user-role">Admin</span>
+                        </div>
+                    </div>
+                    <i class="fas fa-bell icon-button"></i>
+                    <i class="fas fa-cog icon-button"></i>
+                </div>
+            </header>
+
+            <div class="room-content">
+                <div class="room-list">
+                    <div class="room-card" data-room-id="standard">
+                        <img src="../img/STANDART.png" alt="Standard Room">
+                        <div class="room-details">
+                            <h3>Standard</h3>
+                            <p>Kamar nyaman untuk 2 Dewasa & 1 Anak-anak</p>
+                            <a href="room_ebony.html?roomid=standard" class="view-btn">View</a>
+                        </div>
+                    </div>
+                    <div class="room-card" data-room-id="deluxe">
+                        <img src="../img/DELUXE.png" alt="Deluxe Room">
+                        <div class="room-details">
+                            <h3>Deluxe</h3>
+                            <p>Kamar nyaman untuk 2 Dewasa & 1 Anak-anak</p>
+                            <a href="room_ebony.html?roomid=deluxe" class="view-btn">View</a>
+                        </div>
+                    </div>
+                    <div class="room-card" data-room-id="superior">
+                        <img src="../img/SUPERRIOR.png" alt="Superior Room">
+                        <div class="room-details">
+                            <h3>Superior</h3>
+                            <p>Kamar nyaman untuk 2 Dewasa & 1 Anak-anak</p>
+                            <a href="room_ebony.html?roomid=superior" class="view-btn">View</a>
+                        </div>
+                    </div>
+                    <div class="room-card" data-room-id="vip">
+                        <img src="../img/VIP.png" alt="VIP Room">
+                        <div class="room-details">
+                            <h3>VIP</h3>
+                            <p>Kamar nyaman untuk 2 Dewasa & 1 Anak-anak</p>
+                            <a href="room_ebony.html?roomid=vip" class="view-btn">View</a>
+                        </div>
+                    </div>
+                    <div class="room-card" data-room-id="allinvilla">
+                        <img src="../img/VILLA_UMUM.png" alt="All in Villa">
+                        <div class="room-details">
+                            <h3>All In Villa</h3>
+                            <p>Seluruh unit Villa, 14 Kamar & 28 Orang</p>
+                            <a href="room_ebony.html?roomid=allinvilla" class="view-btn">View</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="room-detail-panel">
+                    <div class="detail-header">
+                        <h3>Detail Kamar</h3>
+                        <button class="edit-btn">Edit</button>
+                    </div>
+                    <h2 class="room-name" id="detailRoomName">Deluxe Room</h2>
+                    <img src="https://via.placeholder.com/350x200" alt="Deluxe Room" class="detail-room-img" id="detailRoomImage">
+                    <p class="room-price" id="detailRoomPrice">Harga Per Malam Rp. 500.000</p>
+                    <div class="facilities">
+                        <h4>Fasilitas</h4>
+                        <div class="facility-grid" id="detailFacilitiesList">
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/room_ebony.js"></script> </body>
+</html>
