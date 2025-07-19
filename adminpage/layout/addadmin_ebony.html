@@ -11,40 +11,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
-        /* Mengatur ulang navbar utama agar memiliki 3 bagian: kiri, tengah, kanan */
-        .navbar {
-            justify-content: space-between;
-        }
-
-        /* Bagian kiri header (ikon menu dan brand text) */
-        .navbar-left {
-            display: flex;
-            align-items: center;
-            gap: 15px; /* Jarak antara ikon dan teks */
-            flex: 1; /* Memberi lebar fleksibel */
-        }
-
-        /* Styling untuk teks "Villa Ebony" */
-        .navbar-brand-text {
-            font-size: 1.2em;
-            font-weight: bold; /* DIUBAH: menjadi tebal */
-            color: #333;
-            white-space: nowrap; /* Mencegah teks turun baris */
-        }
-
-        /* Bagian tengah header (judul halaman) */
-        .navbar-page-title {
-            flex: 2; /* Memberi ruang lebih besar di tengah */
-            text-align: center;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        /* Bagian kanan header (placeholder agar judul tetap di tengah) */
-        .navbar-right {
-            flex: 1; /* Memberi lebar fleksibel yang sama dengan bagian kiri */
-        }
+        .navbar { justify-content: space-between; }
+        .navbar-left { display: flex; align-items: center; gap: 15px; flex: 1; }
+        .navbar-brand-text { font-size: 1.2em; font-weight: bold; color: #333; white-space: nowrap; }
+        .navbar-page-title { flex: 2; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .navbar-right { flex: 1; }
     </style>
 </head>
 <body>
@@ -95,7 +66,7 @@
                         <div class="col-right">
                             <div class="room-options-header">
                                 <h6>Jenis Kamar</h6>
-                                <h6 class="text-center">Tamu</h6>
+                                <h6 class="text-center">Kapasitas</h6>
                                 <h6 class="text-right">Harga/Malam</h6>
                             </div>
                             
