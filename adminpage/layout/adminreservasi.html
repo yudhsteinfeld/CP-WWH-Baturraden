@@ -11,6 +11,8 @@
 <body>
     <div class="overlay" id="overlay"></div>
 
+    <div class="modal-overlay" id="addBookingModalOverlay"></div>
+
     <div class="container">
         <aside class="sidebar" id="sidebar">
             <div class="logo">
@@ -21,22 +23,17 @@
             <nav class="main-nav">
                 <ul>
                     <li>
-                        <a href="#"><i class="fas fa-user-tie"></i> <span>User Admin</span></a>
-                    </li>
-                    <li>
                         <a href="/adminpage/indexadmin.html"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a>
                     </li>
-                    <li class="active"> <a href="reservation.html"><i class="fas fa-calendar-alt"></i> <span>Reservation</span></a>
+                    <li class="active">
+                        <a href="reservation.html"><i class="fas fa-calendar-alt"></i> <span>Reservation</span></a>
                     </li>
                     <li>
                         <a href="room.html"><i class="fas fa-bed"></i> <span>Room</span></a>
                     </li>
                     <li>
                         <a href="financial.html"><i class="fas fa-dollar-sign"></i> <span>Financial</span></a>
-                    </li>
-                    <li>
-                        <a href="setting-user.html"><i class="fas fa-cog"></i> <span>Setting User</span></a>
-                    </li>
+                    </li
                 </ul>
             </nav>
         </aside>
@@ -45,17 +42,12 @@
             <header class="navbar">
                 <i class="fas fa-bars menu-toggle" id="menuToggleBtn"></i>
                 
-                <div class="navbar-page-title">Reservation</div> <div class="reservation-header-right">
+                <div class="navbar-page-title">Reservation</div>
+
+                <div class="reservation-header-right">
                     <div class="search-bar-header">
                         <input type="text" placeholder="Search Room">
                         <i class="fas fa-search"></i>
-                    </div>
-                    <div class="user-profile-info-header">
-                        <img src="images/user-avatar.png" alt="User Avatar" class="profile-pic-small">
-                        <span>Gilang Eka S</span>
-                        <span class="admin-role">Admin</span>
-                        <i class="fas fa-bell icon-button"></i>
-                        <i class="fas fa-cog icon-button"></i>
                     </div>
                 </div>
             </header>
@@ -75,8 +67,7 @@
                                 <input type="text" value="20 Jan - 20 Jan 2025" readonly>
                                 <i class="fas fa-calendar-alt"></i>
                             </div>
-                            <button class="add-booking-btn"><i class="fas fa-plus"></i> Add Booking</button>
-                        </div>
+                            <button class="add-booking-btn" id="addBookingBtn"><i class="fas fa-plus"></i> Add Booking</button> </div>
                     </div>
                     <div class="table-container">
                         <table>
@@ -216,5 +207,29 @@
     </div>
 
     <script src="/adminpage/js/adminreservasi.js"></script>
+
+    <div class="modal" id="selectVillaModal">
+        <div class="modal-content">
+            <span class="close-button" id="closeVillaModal">&times;</span>
+            <h2>Select Villa for Booking</h2>
+            <div class="villa-options">
+                <div class="villa-card">
+                    <img src="/img/ebony.png" alt="Villa Ebony"> <h4>Villa Ebony</h4>
+                    <p>Comfortable and spacious.</p>
+                    <button class="select-villa-btn">Select</button>
+                </div>
+                <div class="villa-card">
+                    <img src="/img/accacia.png" alt="Villa Acacia"> <h4>Villa Acacia</h4>
+                    <p>Modern design with great views.</p>
+                    <button class="select-villa-btn">Select</button>
+                </div>
+                <div class="villa-card">
+                    <img src="/img/agathis.png" alt="Villa Agathis"> <h4>Villa Agathis</h4>
+                    <p>Luxurious and private.</p>
+                    <button class="select-villa-btn">Select</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
