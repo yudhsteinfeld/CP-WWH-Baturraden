@@ -240,6 +240,129 @@ table tbody tr:hover {
     border: 1px solid #eee;
 }
 
+/* --- STYLING BARU UNTUK POPUP SELECT VILLA --- */
+
+.modal-overlay {
+    display: none; /* Disembunyikan secara default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Lebih gelap dari overlay sidebar */
+    z-index: 1005; /* Di atas sidebar popup dan overlay sidebar */
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+.modal-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+.modal {
+    display: none; /* Disembunyikan secara default */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Pusatkan popup */
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    z-index: 1010; /* Di atas modal-overlay */
+    max-width: 900px; /* Lebar maksimum */
+    width: 90%; /* Lebar responsif */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s;
+    box-sizing: border-box; /* Pastikan padding dihitung dalam lebar */
+}
+
+.modal.active {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 2em;
+    color: #333;
+    text-align: center;
+}
+
+.modal .close-button {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.modal .close-button:hover {
+    color: #777;
+}
+
+.villa-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Kolom responsif */
+    gap: 20px;
+    justify-content: center; /* Pusatkan kartu villa */
+}
+
+.villa-card {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.villa-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.villa-card img {
+    max-width: 100%;
+    height: 120px; /* Tinggi gambar konsisten */
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.villa-card h4 {
+    margin: 10px 0 5px;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.villa-card p {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.villa-card .select-villa-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.2s;
+}
+.villa-card .select-villa-btn:hover {
+    background-color: #0056b3;
+}
+
+
 /* Media Queries Reservation Page (Override general styles jika perlu) */
 @media (min-width: 769px) {
     /* Pastikan header kanan terlihat di desktop */
@@ -292,5 +415,20 @@ table tbody tr:hover {
     }
     .action-btn.icon-only {
         padding: 8px 10px;
+    }
+
+    /* Modal responsif di mobile */
+    .modal {
+        padding: 20px;
+        width: 95%;
+    }
+    .modal-content h2 {
+        font-size: 1.5em;
+    }
+    .modal .close-button {
+        font-size: 2em;
+    }
+    .villa-options {
+        grid-template-columns: 1fr; /* Satu kolom di mobile */
     }
 }
