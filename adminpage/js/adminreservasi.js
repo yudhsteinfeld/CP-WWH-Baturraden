@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const sidebar = document.getElementById('sidebar');
     const menuToggleBtn = document.getElementById('menuToggleBtn');
     const closeSidebarBtn = document.getElementById('closeSidebarBtn');
-    const overlay = document.getElementById('overlay');
+    const overlay = document.getElementById('overlay'); // Overlay umum untuk sidebar
 
     function openSidebar() {
         sidebar.classList.add('active');
@@ -77,11 +77,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    highlightActiveSidebarLink(); // Panggil saat DOMContentLoaded
+    highlightActiveSidebarLink();
 
     navLinks.forEach(linkLi => {
         linkLi.addEventListener('click', function() {
-            closeSidebar(); // Tutup sidebar setelah link diklik
+            closeSidebar();
         });
     });
 
@@ -105,5 +105,42 @@ document.addEventListener('DOMContentLoaded', function() {
 
     addDataLabels(reservationTable);
     addDataLabels(bookingHistoryTable);
-    // Note: Chart.js tidak diinisialisasi di sini karena ini bukan halaman Dashboard
+
+    // --- Logika Khusus Reservasi: Popup Add Booking Villa ---
+    const addBookingBtn = document.getElementById('addBookingBtn');
+    const selectVillaModal = document.getElementById('selectVillaModal');
+    const closeVillaModalBtn = document.getElementById('closeVillaModal');
+    const modalOverlay = document.getElementById('addBookingModalOverlay'); // Overlay khusus modal
+
+    function openVillaModal() {
+        selectVillaModal.classList.add('active');
+        modalOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Mencegah scrolling body
+    }
+
+    function closeVillaModal() {
+        selectVillaModal.classList.remove('active');
+        modalOverlay.classList.remove('active');
+        document.body.style.overflow = ''; // Mengembalikan scrolling body
+    }
+
+    if (addBookingBtn) {
+        addBookingBtn.addEventListener('click', openVillaModal);
+    } else {
+        console.warn("Tombol 'Add Booking' tidak ditemukan.");
+    }
+
+    if (closeVillaModalBtn) {
+        closeVillaModalBtn.addEventListener('click', closeVillaModal);
+    }
+
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', closeVillaModal); // Menutup modal saat klik overlay-nya
+    }
+
+    if (selectVillaModal) {
+        selectVillaModal.addEventListener('click', function(event) {
+            event.stopPropagation(); // Mencegah klik di dalam modal menutupnya
+        });
+    }
 });
