@@ -143,4 +143,34 @@ document.addEventListener('DOMContentLoaded', function() {
             event.stopPropagation(); // Mencegah klik di dalam modal menutupnya
         });
     }
+
+    // =======================================================================
+    // --- KODE BARU: Menghubungkan Tombol Select Villa ke Halaman Masing-Masing ---
+    // =======================================================================
+    const selectVillaButtons = document.querySelectorAll('.villa-card .select-villa-btn');
+
+    selectVillaButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Dapatkan elemen kartu villa terdekat dari tombol yang diklik
+            const villaCard = this.closest('.villa-card');
+            // Dapatkan nama villa dari elemen <h4> di dalam kartu
+            const villaName = villaCard.querySelector('h4').textContent.trim();
+
+            let destinationFile = '';
+
+            // Tentukan file tujuan berdasarkan nama villa
+            if (villaName === 'Villa Ebony') {
+                destinationFile = 'addadmin_ebony.html';
+            } else if (villaName === 'Villa Acacia') {
+                destinationFile = 'addadmin_accacia.html';
+            } else if (villaName === 'Villa Agathis') {
+                destinationFile = 'addadmin_agathis.html';
+            }
+
+            // Jika file tujuan sudah ditentukan, arahkan halaman ke sana
+            if (destinationFile) {
+                window.location.href = destinationFile;
+            }
+        });
+    });
 });
