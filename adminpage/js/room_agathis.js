@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const roomData = {
         allinvilla: {
             name: "All In Villa",
-            image: "../img/allinvilla.png", // Path gambar disesuaikan
+            image: "/img/agathis.png", // Path gambar disesuaikan
             price: "Rp 2.700.000",
             capacity: "6 Kamar & 12 Orang",
             facilities: [
