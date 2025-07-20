@@ -4,26 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Palawis Risorsis - User Admin Dashboard</title>
-
     <link rel="stylesheet" href="css/index.css">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="overlay" id="overlay"></div>
 
+    <aside class="sidebar" id="sidebar">
+        <div class="logo">
+            <h1>Palawis Risorsis</h1>
+            <p>Perhutanan Alam Wisata</p>
+        </div>
+        <i class="fas fa-times close-sidebar" id="closeSidebarBtn"></i>
+        <nav class="main-nav">
+            <ul>
+                <li class="active"><a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-calendar-alt"></i> Reservation</a></li>
+                <li><a href="#"><i class="fas fa-bed"></i> Room</a></li>
+                <li><a href="#"><i class="fas fa-dollar-sign"></i> Financial</a></li>
+            </ul>
+        </nav>
+    </aside>
+
     <div class="container">
-
-
         <main class="main-content">
             <header class="navbar">
                 <i class="fas fa-bars menu-toggle" id="menuToggleBtn"></i>
-
                 <div class="villa-management">Villa Management Dashboard</div>
-                
                 <div class="user-dropdown-container" id="userDropdownContainer">
                     <div class="user-dropdown-trigger">
-                        <div class="user-avatar-circle">G</div>
                         <div class="user-avatar-circle">G</div>
                         <div class="dropdown-arrow"><i class="fas fa-chevron-down"></i></div>
                     </div>
@@ -32,7 +41,8 @@
                             <li><a href="#"><i class="fas fa-user-circle"></i> Profile</a></li>
                             <li><a href="#"><i class="fas fa-envelope"></i> Messages</a></li>
                             <li><a href="#"><i class="fas fa-cogs"></i> Settings</a></li>
-                            <li><hr></li> <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                            <li><hr></li>
+                            <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                         </ul>
                     </div>
                 </div>
@@ -46,10 +56,10 @@
                             <input type="text" placeholder="Search Apa Saja">
                             <i class="fas fa-search"></i>
                         </div>
-                            <span class="admin-role">Admin</span>
-                            <i class="fas fa-cog icon-button"></i>
-                            <i class="fas fa-bell icon-button"></i>
-                            <i class="fas fa-bars icon-button"></i> </div>
+                        <span class="admin-role">Admin</span>
+                        <i class="fas fa-cog icon-button"></i>
+                        <i class="fas fa-bell icon-button"></i>
+                        <i class="fas fa-bars icon-button"></i>
                     </div>
                 </div>
 
