@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Villa Agathis - Detail Kamar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/adminpage/css/room_agathis.css">
+    </head>
+<body>
+    <div class="overlay" id="overlay"></div>
+
+    <div class="container">
+        <aside class="sidebar" id="sidebar">
+            <div class="logo">
+                <h1>Palawi Risorsis Logo</h1>
+                <p>Perhutanan Alam Wisata</p>
+                <i class="fas fa-times close-sidebar" id="closeSidebarBtn"></i>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li>
+                        <a href="indexadmin.html"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a>
+                    </li>
+                    <li>
+                        <a href="adminreservasi.html"><i class="fas fa-calendar-alt"></i> <span>Reservation</span></a>
+                    </li>
+                    <li class="active">
+                        <a href="room.html"><i class="fas fa-bed"></i> <span>Room</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fas fa-dollar-sign"></i> <span>Financial</span></a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="navbar">
+                <i class="fas fa-bars menu-toggle" id="menuToggleBtn"></i>
+                <div class="page-title">Detail Kamar Villa Agathis</div>
+                <div class="navbar-right">
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="user-info">
+                        <img src="https://via.placeholder.com/35" alt="User Avatar" class="user-avatar-circle">
+                        <div class="user-details">
+                            <span class="user-name">Gilang Eka S</span>
+                            <span class="user-role">Admin</span>
+                        </div>
+                    </div>
+                    <i class="fas fa-bell icon-button"></i>
+                    <i class="fas fa-cog icon-button"></i>
+                </div>
+            </header>
+
+            <div class="room-content">
+                <div class="room-list">
+                    <div class="room-card" data-room-id="allinvilla">
+                        <img src="img/agathis1.png" alt="All In Villa Agathis">
+                        <div class="room-details">
+                            <h3>All In Villa Agathis</h3>
+                            <p>Seluruh unit Villa, 6 Kamar & 12 Orang</p>
+                            <a href="#" class="view-btn" data-room-id="allinvilla">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="room-detail-panel">
+                    <div class="detail-header">
+                        <h3>Detail Kamar</h3>
+                        <button class="edit-btn">Edit</button>
+                    </div>
+                    <h2 class="room-name" id="detailRoomName">All In Villa Agathis</h2>
+                    <img src="img/agathis1.png" alt="All In Villa Agathis" class="detail-room-img" id="detailRoomImage">
+                    <p class="room-price" id="detailRoomPrice">Harga Per Malam Rp. 2.700.000</p>
+                    <div class="facilities">
+                        <h4>Fasilitas</h4>
+                        <div class="facility-grid" id="detailFacilitiesList">
+                            </div>
+                    </div>
+                    <button id="bookNowButton" class="book-now-btn">Pesan Sekarang</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="/adminpage/js/room_agathis.js"></script>
+</body>
+</html>
