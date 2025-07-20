@@ -1,0 +1,572 @@
+/* General Styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: #E6F3F7; /* Matches the dashboard background */
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden; /* Mencegah scroll horizontal yang tidak diinginkan */
+}
+
+/* Container utama untuk sidebar dan main-content */
+.container {
+    display: flex;
+    min-height: 100vh; /* Pastikan container utama mengisi tinggi viewport */
+    width: 100%;
+    position: relative;
+}
+
+/* Overlay for sidebar popup */
+.overlay {
+    display: none; /* Sembunyikan secara default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999; /* Di atas konten, di bawah sidebar */
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+.overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Sidebar Styling - Default (Mobile-First) */
+.sidebar {
+    width: 280px;
+    background-color: #fff;
+    padding: 30px 20px;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 1px solid #eee;
+    position: fixed; /* Penting agar sidebar tetap di tempatnya */
+    top: 0;
+    height: 100%;
+    z-index: 1000; /* Pastikan di atas semua elemen lain saat popup */
+    transition: transform 0.3s ease-in-out, visibility 0.3s, opacity 0.3s ease-in-out;
+
+    /* Default state for mobile: hidden as a popup */
+    transform: translateX(-100%);
+    visibility: hidden;
+    opacity: 0;
+}
+
+/* Class ini akan ditambahkan oleh JS untuk menampilkan sidebar sebagai popup (di mobile) */
+.sidebar.active {
+    transform: translateX(0%); /* TAMPILKAN SAAT AKTIF (digunakan di mobile) */
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Tombol close di dalam sidebar (terlihat hanya saat sidebar popup di mobile) */
+.sidebar .close-sidebar {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1.8em;
+    color: #6c757d;
+    cursor: pointer;
+    display: none; /* Sembunyikan secara default (akan ditampilkan saat sidebar.active di mobile) */
+    transition: opacity 0.3s;
+}
+
+.sidebar.active .close-sidebar {
+    display: block; /* Tampilkan saat sidebar aktif (di mobile) */
+}
+
+/* Bagian logo dan navigasi sidebar */
+.sidebar .logo {
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative; /* Untuk posisi tombol close */
+    width: 100%;
+}
+.sidebar .logo h1 {
+    font-size: 1.5em;
+    color: #4CAF50;
+    margin-bottom: 5px;
+    margin-top: 0;
+}
+.sidebar .logo p {
+    font-size: 0.85em;
+    color: #666;
+    margin: 0;
+}
+.sidebar .main-nav {
+    width: 100%;
+}
+.sidebar .main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.sidebar .main-nav ul li {
+    margin-bottom: 15px;
+}
+.sidebar .main-nav ul li a {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #555;
+    border-radius: 10px;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+    font-weight: 500;
+}
+.sidebar .main-nav ul li a:hover {
+    background-color: #e0f2f7;
+    color: #007bff;
+    transform: translateX(5px);
+}
+.sidebar .main-nav ul li.active a {
+    background-color: #D1ECF1;
+    color: #0056b3;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.sidebar .main-nav ul li a i {
+    margin-right: 15px;
+    font-size: 1.3em;
+    color: #4CAF50;
+}
+.sidebar .main-nav ul li.active a i {
+    color: #0056b3;
+}
+
+/* Main Content Styling */
+.main-content {
+    flex-grow: 1; /* Memastikan konten utama mengisi ruang sisa */
+    padding: 30px;
+    background-color: #E6F3F7;
+    width: 100%; /* Ambil lebar penuh */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    /* Padding kiri akan diatur oleh media query */
+    padding-left: 20px; /* Default padding untuk mobile/saat sidebar tersembunyi */
+    transition: padding-left 0.3s ease-in-out, filter 0.3s ease-in-out; /* Transisi untuk padding dan blur */
+}
+
+/* Navbar Styling (Header di dalam main-content) */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
+    position: relative;
+    padding-right: 10px;
+    background-color: transparent; /* Pastikan navbar di dalam main-content transparan */
+}
+
+.navbar .menu-toggle {
+    font-size: 1.8em;
+    cursor: pointer;
+    color: #6c757d;
+    margin-right: 20px;
+    display: block; /* Tampilkan tombol toggle di mobile */
+}
+
+.navbar .page-title {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #333;
+    text-align: left;
+    flex-grow: 1; /* Memungkinkan mengambil ruang yang tersedia */
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.search-bar {
+    position: relative;
+    margin-right: 10px;
+}
+
+.search-bar input {
+    padding: 8px 15px 8px 35px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 0.9em;
+    outline: none;
+    width: 180px;
+}
+
+.search-bar i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-avatar-circle {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: #555;
+    font-size: 0.9em;
+    border: 1px solid #ddd;
+    object-fit: cover;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9em;
+}
+
+.user-name {
+    font-weight: bold;
+    color: #333;
+}
+
+.user-role {
+    color: #6c757d;
+}
+
+.icon-button {
+    font-size: 1.2em;
+    color: #6c757d;
+    cursor: pointer;
+}
+
+/* Room Specific Content */
+.room-content {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap; /* Memungkinkan wrapping di layar kecil */
+    flex-grow: 1; /* Agar konten kamar mengisi ruang yang tersisa di main-content */
+}
+
+.room-list {
+    flex: 1.5; /* Mengambil lebih banyak ruang */
+    min-width: 300px; /* Lebar minimum untuk daftar */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.room-card {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.room-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.room-card img {
+    width: 120px; /* Ukuran tetap untuk thumbnail */
+    height: 80px; /* Ukuran tetap untuk thumbnail */
+    border-radius: 8px;
+    object-fit: cover; /* Memastikan gambar mengisi area tanpa distorsi */
+    flex-shrink: 0; /* Mencegah gambar menyusut */
+}
+
+.room-details {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.room-details h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.3em;
+    color: #333;
+}
+
+.room-details p {
+    margin: 0 0 10px 0;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.room-card .view-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 6px 16px; /* Sesuaikan padding */
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.85em; /* Ukuran font lebih kecil */
+    transition: background-color 0.3s;
+    text-decoration: none; /* Hilangkan underline */
+    display: inline-block; /* Pastikan tombol mengambil ukuran kontennya */
+    text-align: center;
+    white-space: nowrap; /* Mencegah teks terpotong */
+}
+
+.room-card .view-btn:hover {
+    background-color: #45a049;
+}
+
+.room-detail-panel {
+    flex: 1; /* Mengambil ruang tersisa */
+    min-width: 300px; /* Lebar minimum untuk panel detail */
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border-left: 5px solid #4CAF50; /* Garis hijau di kiri */
+    display: flex;
+    flex-direction: column;
+}
+
+.room-detail-panel .detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.room-detail-panel .detail-header h3 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #555;
+}
+
+.room-detail-panel .edit-btn {
+    background-color: #2196F3;
+    color: white;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.85em;
+    transition: background-color 0.3s;
+}
+
+.room-detail-panel .edit-btn:hover {
+    background-color: #1976D2;
+}
+
+.room-detail-panel .room-name {
+    font-size: 1.8em;
+    color: #333;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.room-detail-panel .detail-room-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.room-detail-panel .room-price {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #28a745;
+    margin-bottom: 25px;
+}
+
+.room-detail-panel .facilities h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    color: #555;
+}
+
+.facility-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.facility-grid span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.facility-grid span i {
+    color: #4CAF50; /* Icons in green */
+    font-size: 1.1em;
+}
+
+.room-detail-panel .book-now-btn {
+    background-color: #007bff; /* Warna biru Bootstrap */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-top: auto; /* Dorong tombol ke bawah */
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.book-now-btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+
+/* Media Queries for Responsiveness */
+
+/* Desktop / Large Screens (>= 769px) */
+@media (min-width: 769px) {
+    .sidebar {
+        position: static; /* Kembali ke posisi normal di layout flex */
+        transform: translateX(0%); /* Pastikan sidebar terlihat */
+        visibility: visible;
+        opacity: 1;
+        box-shadow: 2px 0 10px rgba(0,0,0,0.05); /* Bayangan lebih ringan untuk desktop */
+        z-index: 1; /* Turunkan z-index agar tidak seperti popup */
+    }
+    .sidebar .close-sidebar {
+        display: none; /* Sembunyikan tombol close di desktop */
+    }
+    .main-content {
+        padding-left: calc(30px + 280px); /* Sesuaikan padding agar tidak tertutup sidebar */
+    }
+    .navbar .menu-toggle {
+        display: none; /* Sembunyikan tombol toggle di desktop */
+    }
+    .overlay {
+        display: none !important; /* Pastikan overlay tidak muncul di desktop */
+    }
+    .navbar {
+        justify-content: space-between;
+    }
+    .navbar-right {
+        flex-direction: row;
+        align-items: center;
+        gap: 20px;
+    }
+    .room-content {
+        flex-direction: row; /* Ensure side-by-side on desktop */
+    }
+    .room-list {
+        flex: 1.5;
+    }
+    .room-detail-panel {
+        flex: 1;
+    }
+}
+
+
+/* Tablet / Mobile (Screens <= 768px) */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 280px;
+        position: fixed; /* Kembali ke fixed untuk popup */
+        transform: translateX(-100%); /* Sembunyikan sidebar di mobile */
+        visibility: hidden;
+        opacity: 0;
+        box-shadow: 5px 0 15px rgba(0,0,0,0.2); /* Bayangan lebih kuat untuk mobile popup */
+        z-index: 1000; /* Pastikan di atas konten dan overlay */
+    }
+    .sidebar.active {
+        transform: translateX(0%); /* Tampilkan sidebar saat aktif */
+        visibility: visible;
+        opacity: 1;
+    }
+    .sidebar .close-sidebar {
+        display: block; /* Tampilkan tombol close di mobile */
+    }
+    .main-content {
+        padding-left: 20px;
+        padding-right: 20px;
+        width: 100%; /* Ambil lebar penuh */
+    }
+    .navbar .menu-toggle {
+        display: block; /* Tampilkan tombol toggle di mobile */
+        order: -1; /* Pindahkan ke kiri */
+        margin-right: auto;
+    }
+    .navbar {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+    }
+    .navbar .page-title {
+        font-size: 1.8em;
+        margin-bottom: 0;
+        text-align: left;
+        flex-grow: unset;
+        order: 1;
+    }
+    .navbar-right {
+        flex-direction: column; /* Stack search and user info */
+        align-items: flex-end;
+        gap: 10px;
+    }
+    .search-bar {
+        margin-right: 0;
+        width: 100%;
+    }
+    .search-bar input {
+        width: 100%;
+    }
+    .user-info {
+        width: 100%;
+        justify-content: flex-end;
+    }
+    .icon-button {
+        display: none; /* Hide extra icons for simplicity on mobile */
+    }
+
+    .room-content {
+        flex-direction: column; /* Stack room list and detail panel */
+    }
+    .room-list, .room-detail-panel {
+        min-width: unset; /* Remove min-width to allow shrinking */
+        width: 100%; /* Take full width */
+    }
+    .room-card {
+        flex-direction: column; /* Stack image and details in room card */
+        text-align: center;
+    }
+    .room-card img {
+        width: 100%; /* Full width image in card */
+        height: auto;
+        margin-bottom: 10px;
+    }
+    .room-detail-panel .detail-room-img {
+        height: auto; /* Adjust height for mobile */
+    }
+    .facility-grid {
+        grid-template-columns: 1fr; /* Single column for facilities */
+    }
+}
