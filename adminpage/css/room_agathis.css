@@ -238,83 +238,70 @@ body {
     cursor: pointer;
 }
 
-/* Room Specific Content */
+/* Room Specific Content (Modified for Agathis single room view) */
+/* room-content lama disembunyikan karena menggunakan layout baru di room-detail-container */
 .room-content {
+    display: none;
+}
+
+/* === NEW STYLES FOR AGATHIS VILLA DETAIL VIEW === */
+
+.main-content .page-title {
+    margin-bottom: 20px;
+}
+
+.room-detail-container {
     display: flex;
     gap: 30px;
-    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    align-items: flex-start; /* Agar gambar dan detail sejajar dari atas */
 }
 
-.room-list {
-    flex: 1.5; /* Takes more space */
-    min-width: 300px; /* Minimum width for the list */
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+.room-images {
+    flex: 0 0 50%; /* Lebar tetap untuk bagian gambar */
+    /* Tidak ada padding/background di sini jika room-images hanya menampung gambar */
 }
 
-.room-card {
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.room-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-}
-
-.room-card img {
-    width: 150px;
-    height: 90px;
+.room-images .main-image {
+    width: 100%;
     border-radius: 8px;
-    object-fit: cover;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    object-fit: cover; /* Menjaga aspek rasio dan mengisi area */
+    max-height: 400px; /* Batas ketinggian jika diperlukan */
+}
+
+.room-images .thumbnail-images {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap; /* Agar thumbnail bisa wrap ke baris baru jika terlalu banyak */
+    justify-content: flex-start; /* Align thumbnails to the start */
+}
+
+.room-images .thumbnail-images img {
+    width: 100px; /* Ukuran thumbnail */
+    height: 70px; /* Tinggi thumbnail, sesuaikan dengan aspek rasio gambar Anda */
+    border-radius: 4px;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    object-fit: cover; /* Menjaga aspek rasio dan mengisi area */
+}
+
+.room-images .thumbnail-images img:hover {
+    opacity: 1;
+    border: 2px solid #4CAF50; /* Efek hover */
+}
+
+.room-images .image-note {
+    font-size: 0.85em;
+    color: #777;
+    margin-top: 10px;
+    text-align: left;
 }
 
 .room-details {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.room-details h3 {
-    margin: 0 0 5px 0;
-    font-size: 1.3em;
-    color: #333;
-}
-
-.room-details p {
-    margin: 0 0 10px 0;
-    font-size: 0.9em;
-    color: #666;
-}
-
-.room-card .view-btn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 8px 20px;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 0.9em;
-    transition: background-color 0.3s;
-    text-align: center; /* Menengahkan teks secara horizontal*/
-    display: block; /* Membuat elemen menjadi blok agar text-align berfungsi*/
-}
-
-.room-card .view-btn:hover {
-    background-color: #45a049;
-}
-
-.room-detail-panel {
-    flex: 1; /* Takes remaining space */
-    min-width: 300px; /* Minimum width for the detail panel */
+    flex: 1; /* Sisa ruang untuk detail */
     background-color: #fff;
     padding: 25px;
     border-radius: 12px;
@@ -322,85 +309,105 @@ body {
     border-left: 5px solid #4CAF50; /* Green line on the left */
 }
 
-.room-detail-panel .detail-header {
+.room-details .detail-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 15px;
-    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
     padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
 }
 
-.room-detail-panel .detail-header h3 {
+.room-details .detail-header h3 {
     margin: 0;
-    font-size: 1.2em;
+    font-size: 1.5em; /* Ukuran font lebih besar */
     color: #555;
 }
 
-.room-detail-panel .edit-btn {
+.room-details .room-name {
+    font-size: 2.2em; /* Ukuran font lebih besar */
+    font-weight: 700; /* Lebih tebal */
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.room-details .room-price {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #28a745; /* Warna hijau untuk harga */
+    margin-bottom: 15px;
+}
+
+.room-details p {
+    margin-bottom: 8px;
+    color: #666;
+    font-size: 1em; /* Ukuran font standar untuk poin detail */
+}
+
+.room-details p i {
+    margin-right: 10px; /* Jarak ikon lebih besar */
+    color: #4CAF50; /* Warna hijau untuk ikon checkmark */
+    font-size: 1.1em;
+}
+
+.room-details .facilities {
+    margin-top: 20px;
+}
+
+.room-details .facilities h4 {
+    font-size: 1.3em;
+    color: #555;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+}
+
+.room-details .facility-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dua kolom untuk fasilitas */
+    gap: 10px 20px; /* Jarak antar item */
+    font-size: 1em;
+    color: #555;
+}
+
+.room-details .facility-grid span {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.room-details .facility-grid span i {
+    color: #4CAF50; /* Warna hijau untuk ikon fasilitas */
+    font-size: 1.2em;
+}
+
+.room-details .note {
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #eee; /* Garis di atas catatan */
+}
+
+/* Gaya tombol edit */
+.room-details .edit-btn {
     background-color: #2196F3;
     color: white;
-    padding: 5px 15px;
+    padding: 8px 15px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 0.85em;
+    font-size: 0.9em;
     transition: background-color 0.3s;
 }
 
-.room-detail-panel .edit-btn:hover {
+.room-details .edit-btn:hover {
     background-color: #1976D2;
 }
 
-.room-detail-panel .room-name {
-    font-size: 1.8em;
-    color: #333;
-    margin-top: 20px;
-    margin-bottom: 15px;
-}
-
-.room-detail-panel .detail-room-img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
-
-.room-detail-panel .room-price {
-    font-size: 1.2em;
-    font-weight: bold;
-    color: #28a745;
-    margin-bottom: 25px;
-}
-
-.room-detail-panel .facilities h4 {
-    margin-top: 0;
-    margin-bottom: 15px;
-    font-size: 1.1em;
-    color: #555;
-}
-
-.facility-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    font-size: 0.9em;
-    color: #555;
-}
-
-.facility-grid span {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.facility-grid span i {
-    color: #4CAF50; /* Icons in green */
-    font-size: 1.1em;
-}
-
-/* Media Queries for Responsiveness - Adapted for Room page */
+/* Media Queries for Responsiveness */
 
 /* Desktop / Large Screens (>= 769px) */
 @media (min-width: 769px) {
@@ -428,20 +435,6 @@ body {
     }
     .navbar {
         justify-content: space-between;
-    }
-    /*
-    .user-dropdown-container { // Dihapus dari room.html, jadi ini tidak berlaku
-        display: flex;
-    }
-    */
-    .room-content {
-        flex-direction: row; /* Ensure side-by-side on desktop */
-    }
-    .room-list {
-        flex: 1.5;
-    }
-    .room-detail-panel {
-        flex: 1;
     }
 }
 
@@ -485,12 +478,6 @@ body {
         flex-grow: unset;
         order: 1;
     }
-    /* .navbar .villa-management { // Dihapus dari room.html, jadi ini tidak berlaku
-        display: none;
-    } */
-    /* .user-dropdown-container { // Dihapus dari room.html, jadi ini tidak berlaku
-        display: none;
-    } */
     .navbar-right {
         flex-direction: column; /* Stack search and user info */
         align-items: flex-end;
@@ -511,26 +498,28 @@ body {
         display: none; /* Hide extra icons for simplicity on mobile */
     }
 
-    .room-content {
-        flex-direction: column; /* Stack room list and detail panel */
+    /* === RESPONSIVE FOR NEW AGATHIS VILLA DETAIL VIEW === */
+    .room-detail-container {
+        flex-direction: column; /* Stack vertically on smaller screens */
     }
-    .room-list, .room-detail-panel {
-        min-width: unset; /* Remove min-width to allow shrinking */
-        width: 100%; /* Take full width */
+    .room-images {
+        flex: 0 0 auto; /* Allow image section to take full width */
+        width: 100%;
     }
-    .room-card {
-        flex-direction: column; /* Stack image and details in room card */
-        text-align: center;
+    .room-details {
+        width: 100%;
+        margin-top: 20px;
+        border-left: none; /* Hapus garis hijau di kiri pada mobile */
+        border-top: 5px solid #4CAF50; /* Pindahkan garis ke atas */
     }
-    .room-card img {
-        width: 100%; /* Full width image in card */
-        height: auto;
-        margin-bottom: 10px;
+    .room-images .thumbnail-images {
+        justify-content: center; /* Pusatkan thumbnail di mobile */
     }
-    .room-detail-panel .detail-room-img {
-        height: auto; /* Adjust height for mobile */
+    .room-images .thumbnail-images img {
+        width: 80px; /* Sesuaikan ukuran thumbnail di mobile */
+        height: 55px;
     }
-    .facility-grid {
-        grid-template-columns: 1fr; /* Single column for facilities */
+    .room-details .facility-grid {
+        grid-template-columns: 1fr; /* Satu kolom untuk fasilitas di mobile */
     }
 }
