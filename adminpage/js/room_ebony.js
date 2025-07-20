@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const roomData = {
         standard: {
             name: "Standard Room",
-            image: "../img/STANDART.png", // Pastikan gambar ini ada di folder adminpage/img/
+            image: "/img/FO EBONY.png", // Pastikan gambar ini ada di folder adminpage/img/
             price: "Rp 350.000",
             capacity: "2 Dewasa & 1 Anak-anak",
             facilities: [
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         superior: {
             name: "Superior Room",
-            image: "../img/SUPERRIOR.png", // Pastikan gambar ini ada di folder adminpage/img/
+            image: "/img/hutan.jpg", // Pastikan gambar ini ada di folder adminpage/img/
             price: "Rp 450.000",
             capacity: "2 Dewasa & 1 Anak-anak",
             facilities: [
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         deluxe: {
             name: "Deluxe Room",
-            image: "../img/DELUXE.png", // Pastikan gambar ini ada di folder adminpage/img/
+            image: "/img/DELUXE.png", // Pastikan gambar ini ada di folder adminpage/img/
             price: "Rp 500.000",
             capacity: "2 Dewasa & 1 Anak-anak",
             facilities: [
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         vip: {
             name: "VIP/Executive Room",
-            image: "../img/VIP.png", // Pastikan gambar ini ada di folder adminpage/img/
+            image: "/img/VIP.png", // Pastikan gambar ini ada di folder adminpage/img/
             price: "Rp 600.000",
             capacity: "2 Dewasa & 1 Anak-anak",
             facilities: [
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         allinvilla: {
             name: "All In Villa",
-            image: "../img/VILLA_UMUM.png", // Ganti dengan path gambar villa umum Anda jika ada
+            image: "/img/ebony.png", // Ganti dengan path gambar villa umum Anda jika ada
             price: "Rp 6.600.000",
             capacity: "14 Kamar & 28 Orang",
             facilities: [
