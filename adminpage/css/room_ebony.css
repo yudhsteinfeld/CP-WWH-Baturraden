@@ -304,6 +304,8 @@ body {
     cursor: pointer;
     font-size: 0.9em;
     transition: background-color 0.3s;
+    text-align: center; /* Menengahkan teks secara horizontal*/
+    display: block; /* Membuat elemen menjadi blok agar text-align berfungsi*/
 }
 
 .room-card .view-btn:hover {
