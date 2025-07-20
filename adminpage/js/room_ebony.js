@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const roomData = {
         standard: {
             name: "Standard Room",
-            image: "/img/FO EBONY.png", // Pastikan gambar ini ada di folder adminpage/img/
+            image: "../img/FO EBONY.png", // Pastikan gambar ini ada di folder adminpage/img/
             price: "Rp 350.000",
             capacity: "2 Dewasa & 1 Anak-anak",
             facilities: [
