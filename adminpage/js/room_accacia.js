@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const roomData = {
         accacia: { // ID kamar diubah menjadi 'accacia'
             name: "All In Villa Accacia", // Nama kamar
-            image: "../img/accacia1.png", // Path gambar disesuaikan
+            image: "/img/accacia.png", // Path gambar disesuaikan
             price: "Rp 2.400.000", // Harga per malam
             capacity: "4 Kamar & 8 Orang", // Kapasitas disesuaikan
             facilities: [ // Daftar fasilitas dari file yang diberikan
