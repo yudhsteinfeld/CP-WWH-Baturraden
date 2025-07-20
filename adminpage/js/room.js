@@ -68,10 +68,39 @@ document.addEventListener('DOMContentLoaded', function() {
             navLinks.forEach(item => item.parentElement.classList.remove('active'));
             // Tambahkan kelas aktif ke parent <li> dari tautan yang diklik
             this.parentElement.classList.add('active');
-            
+
             // Tutup sidebar setelah mengklik item menu karena dia adalah popup
-            closeSidebar(); 
+            closeSidebar();
         });
+    });
+
+    // Ini untuk memastikan link di sidebar tetap aktif saat halaman dimuat langsung
+    const currentPath = window.location.pathname;
+    navLinks.forEach(link => {
+        // Asumsi link sidebar di room.html (sekarang di layout/) mengarah ke file di layout/
+        // Contoh href di sidebar: <a href="room.html">
+        // Dan currentPath akan terlihat seperti: /CP-WWH-BATURRADEN/adminpage/layout/room.html
+
+        // Untuk link 'Room' di sidebar yang mengarah ke room.html
+        if (currentPath.includes('layout/room.html') && link.href.endsWith('layout/room.html')) {
+             link.parentElement.classList.add('active');
+        }
+        // Untuk link 'Reservation'
+        else if (currentPath.includes('layout/adminreservasi.html') && link.href.endsWith('layout/adminreservasi.html')) {
+             link.parentElement.classList.add('active');
+        }
+        // Untuk link 'Dashboard'
+        else if (currentPath.includes('layout/indexadmin.html') && link.href.endsWith('layout/indexadmin.html')) {
+             link.parentElement.classList.add('active');
+        }
+        // Jika Anda berada di halaman detail kamar (room_ebony.html, room_agathis.html, room_accacia.html)
+        // dan ingin link "Room" di sidebar tetap aktif
+        else if (currentPath.includes('layout/room_ebony.html') || currentPath.includes('layout/room_agathis.html') || currentPath.includes('layout/room_accacia.html')) {
+             // Temukan link 'Room' di sidebar (yang href-nya 'room.html') dan aktifkan
+             if (link.href.endsWith('layout/room.html')) {
+                 link.parentElement.classList.add('active');
+             }
+        }
     });
 
     // Tidak ada logika Chart.js yang spesifik untuk room.html yang diperlukan berdasarkan gambar.
