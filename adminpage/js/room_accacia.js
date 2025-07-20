@@ -3,7 +3,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const roomData = {
         accacia: { // ID kamar diubah menjadi 'accacia'
             name: "All In Villa Accacia", // Nama kamar
-            image: "/img/accacia.png", // Path gambar disesuaikan
+            // Path gambar disesuaikan: naik satu level dari js/ ke adminpage/, lalu masuk ke img/
+            image: "../img/accacia1.png", // RESOLVED: Removed merge conflict markers
             price: "Rp 2.400.000", // Harga per malam
             capacity: "4 Kamar & 8 Orang", // Kapasitas disesuaikan
             facilities: [ // Daftar fasilitas dari file yang diberikan
@@ -109,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const roomCard = this.closest('.room-card');
             const roomId = roomCard.dataset.roomId;
             updateRoomDetail(roomId);
-            
+
             window.history.pushState(null, '', `room_accacia.html?roomid=${roomId}`); // URL disesuaikan
         });
     });
@@ -160,16 +161,27 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', function(event) {
             navLinks.forEach(item => item.parentElement.classList.remove('active'));
             this.parentElement.classList.add('active');
-            
-            closeSidebar(); 
+
+            closeSidebar();
         });
     });
 
     // Ini untuk memastikan link di sidebar tetap aktif saat halaman dimuat langsung
     const currentPath = window.location.pathname;
     navLinks.forEach(link => {
-        if (currentPath.includes('room.html') || currentPath.includes('room_ebony.html') || currentPath.includes('room_agathis.html') || currentPath.includes('room_accacia.html')) {
-            if (link.href.includes('room.html') || link.href.includes('room_accacia.html')) { // Diperbarui untuk accacia
+        // Contoh currentPath: /CP-WWH-BATURRADEN/adminpage/layout/room_accacia.html
+        // Contoh link.href di sidebar: .../layout/room.html
+        if (currentPath.includes('layout/room.html') && link.href.endsWith('layout/room.html')) {
+            link.parentElement.classList.add('active');
+        } else if (currentPath.includes('layout/adminreservasi.html') && link.href.endsWith('layout/adminreservasi.html')) {
+            link.parentElement.classList.add('active');
+        } else if (currentPath.includes('layout/indexadmin.html') && link.href.endsWith('layout/indexadmin.html')) {
+            link.parentElement.classList.add('active');
+        }
+        // Jika Anda berada di halaman detail kamar (room_ebony.html, room_agathis.html, room_accacia.html)
+        // dan ingin link "Room" di sidebar tetap aktif
+        else if (currentPath.includes('layout/room_ebony.html') || currentPath.includes('layout/room_agathis.html') || currentPath.includes('layout/room_accacia.html')) {
+            if (link.href.endsWith('layout/room.html')) { // Aktifkan link ke room.html
                 link.parentElement.classList.add('active');
             }
         }
