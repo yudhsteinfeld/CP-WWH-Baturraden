@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Palawis Risorsis - Room Details Agathis</title>
+    <title>Palawis Risorsis - Villa Agathis Details</title>
     <link rel="stylesheet" href="../css/room_agathis.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -38,7 +38,7 @@
         <main class="main-content">
             <header class="navbar">
                 <i class="fas fa-bars menu-toggle" id="menuToggleBtn"></i>
-                <div class="page-title">Room Details Agathis</div>
+                <div class="page-title">Villa Agathis</div>
                 <div class="navbar-right">
                     <div class="search-bar">
                         <input type="text" placeholder="Search Room">
@@ -56,31 +56,31 @@
                 </div>
             </header>
 
-            <div class="room-content">
-                <div class="room-list">
-                    <div class="room-card" data-room-id="allinvilla">
-                        <img src="../img/allinvilla.png" alt="All in Villa">
-                        <div class="room-details">
-                            <h3>All In Villa</h3>
-                            <p>Seluruh unit Villa, 6 Kamar & 12 Orang</p>
-                            <a href="room_agathis.html?roomid=allinvilla" class="view-btn">View</a>
-                        </div>
+            <div class="room-detail-container">
+                <div class="room-images">
+                    <img src="../img/agathis_main.jpg" alt="Villa Agathis Main" class="main-image" id="detailRoomImage">
+                    <div class="thumbnail-images">
+                        <img src="../img/agathis_thumb1.jpg" alt="Villa Agathis Thumbnail 1" onclick="document.getElementById('detailRoomImage').src='../img/agathis_thumb1.jpg'">
+                        <img src="../img/agathis_thumb2.jpg" alt="Villa Agathis Thumbnail 2" onclick="document.getElementById('detailRoomImage').src='../img/agathis_thumb2.jpg'">
+                        <img src="../img/agathis_thumb3.jpg" alt="Villa Agathis Thumbnail 3" onclick="document.getElementById('detailRoomImage').src='../img/agathis_thumb3.jpg'">
                     </div>
+                    <p class="image-note">*Harga dapat berubah sewaktu-waktu. Hubungi kontak untuk info terbaru.</p>
                 </div>
-
-                <div class="room-detail-panel">
+                <div class="room-details">
                     <div class="detail-header">
                         <h3>Detail Kamar</h3>
                         <button class="edit-btn">Edit</button>
                     </div>
-                    <h2 class="room-name" id="detailRoomName">All In Villa</h2>
-                    <img src="../img/allinvilla.png" alt="All In Villa" class="detail-room-img" id="detailRoomImage">
-                    <p class="room-price" id="detailRoomPrice">Harga Per Malam Rp 2.700.000</p>
+                    <h2 class="room-name" id="detailRoomName">All In Villa Agathis</h2>
+                    <p class="room-price" id="detailRoomPrice">Harga Permalam Rp 2.700.000</p>
+                    <p><i class="fas fa-check-circle"></i> 6 Kamar Tidur</p>
+                    <p><i class="fas fa-check-circle"></i> Kapasitas 12 orang</p>
                     <div class="facilities">
                         <h4>Fasilitas</h4>
                         <div class="facility-grid" id="detailFacilitiesList">
                             </div>
                     </div>
+                    <p class="note">Catatan tambahan jika ada (misal: kebijakan pembatalan, dll.)</p>
                 </div>
             </div>
         </main>
