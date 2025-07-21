@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
         accacia: { // ID kamar diubah menjadi 'accacia'
             name: "All In Villa Accacia", // Nama kamar
             // Path gambar disesuaikan: naik satu level dari js/ ke adminpage/, lalu masuk ke img/
-            image: "../img/accacia1.png", // RESOLVED: Removed merge conflict markers
+            image: "/img/accacia.png", // RESOLVED: Removed merge conflict markers
             price: "Rp 2.400.000", // Harga per malam
             capacity: "4 Kamar & 8 Orang", // Kapasitas disesuaikan
             facilities: [ // Daftar fasilitas dari file yang diberikan
