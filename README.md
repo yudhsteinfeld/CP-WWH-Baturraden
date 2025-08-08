@@ -49,7 +49,7 @@ Sistem ini terdiri dari:
 - Token-based Authentication untuk API.
 - Validasi input untuk mencegah data berbahaya masuk.
 - CRUD pengelolaan Data Booking Admin
-- Update harga Villa dari Admin
+- Update harga Villa dari Admin 
 
 ---
 
@@ -158,16 +158,60 @@ Lapisan frontend bertanggung jawab untuk mengelola sesi pengguna dan menjaga aks
 ## ⚙️ Instalasi
 
 1. **Download XAMPP (Untuk running MySQL)**
+   - Buka dan Start apace,MySQL.
+   - Kllik MySQL admin dan Buat database baru. 
 2. **Download Composer**
    -   Install Composer sama saja dengan menginstall laravel, Download Versi Laravel sesuai Kebutuhan.
    -   Link Panduan Download : https://santrikoding.com/tutorial-laravel-11-2-cara-install-dan-menjalankan-laravel-11 
-4. **Download Gitbash**
-5. **Clone repository:**
-   ```bash
-git clone https://github.com/username/nama-repo.git
-   ```
-3.  **Perlindungan Halaman (Route Guarding)**
-4.  **Perlindungan Halaman (Route Guarding)**
-5.  **Perlindungan Halaman (Route Guarding)**
-6.  **Perlindungan Halaman (Route Guarding)**
-7.  **Perlindungan Halaman (Route Guarding)**
+3. **Download Gitbash**
+4. **Clone repository:**
+```bash
+   git clone https://github.com/username/nama-repo.git
+```
+   - Bisa juga Download langsung diroot repository nya, lalu exstrack. 
+5.  **Masuk ke Folder Proyek yabg sudah didownload/clone dengan Editor**
+6.  **Buka File .env di Backend Laravel, Atur Konfigurasi Database MySQL**
+```bash
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE= nama_database
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+7.  **Generate key Laravel:**
+   **Fungsi:** Membuat dan mengisi nilai APP_KEY di file .env Laravel dengan application key yang baru.
+    Perintah Git Bash:
+ ```bash
+php artisan key:generate
+```
+8.  **Jalankan migrasi & seeder:**
+Membuat/Update struktur database lalu langsung mengisi data awalnya dalam satu perintah.
+ ```bash
+php artisan migrate --seed
+```
+
+---
+
+## 🚀 Cara Menjalankan
+
+1. **Buka cmd, Cek IP laptop/lokal**
+   windows
+ ```bash
+ipconfig
+```
+- Salin  IPv4 Address : misal 192.168.x.x
+
+2. **Buka Git Bash dan arahkan ke folder Backend**
+- windows
+ ```bash
+cd "\Lokasi_file_backend"
+```
+3.  **Jalankan laravel dengan ip server lokal**
+ ```bash
+php artisan serve --host=ip_lokal_anda --port=8000
+```
+---
+
+## 🔗 Koneksi Backend & Frontend
