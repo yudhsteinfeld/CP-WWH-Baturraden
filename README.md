@@ -35,6 +35,7 @@ Sistem ini terdiri dari:
 - **Auth**: Laravel Sanctum / Passport (Token-based)
 - **Keamanan Data**: Validation, Password Hashing, Anti-SQL Injection
 - **Version Control**: Git & GitHub
+- **Editor**: VsCode
 
 ---
 
@@ -52,21 +53,18 @@ Sistem ini terdiri dari:
 
 ---
 
-## 📁 Struktur Folder
+## 📁 Struktur Folder Backend
 ```bash
 
 .
 ├── app/
 │   ├── Http/
-│   │   ├── Controllers/Api/      # Controller API
+│   │   ├── Controllers/Api/      # Controller API(Semua Logika API)
 │   │   └── Middleware/           # Middleware otentikasi & otorisasi
-│   ├── Models/                   # Eloquent Models
-├── public/                       # Aset publik (CSS, JS, gambar)
-├── resources/views/              # Halaman Blade Template
+│   ├── Models/                   # Eloquent Models (Penghubung Relasi Antar Tabel)
 ├── routes/
-│   ├── web.php                    # Route frontend
-│   └── api.php                    # Route backend API
-├── database/migrations/           # Struktur tabel
+│   └── api.php                    # Route backend API(Request HTTP)
+├── database/migrations/           # CREATE Tabel 
 ├── .env                           # Konfigurasi proyek
 └── README.md
 ```
@@ -81,9 +79,9 @@ Sistem database dirancang secara relasional untuk memastikan integritas dan efis
 | -------------- | -------------------------------------------------- |
 | `users`        | Menyimpan data pengguna (customer & admin).        |
 | `villas`       | Menyimpan data villa (misalnya, Villa A, B, C).    |
-| `room_types`   | Menyimpan tipe kamar per villa (jumlah, kapasitas, harga). |
-| `bookings`     | Menyimpan semua data pemesanan yang dibuat pengguna. |
-| `payments`     | Menyimpan data pembayaran yang terkait dengan pemesanan. |
+| `room_types`   | Menyimpan tipe kamar per villa (jumlah kamar, kapasitas kamar, harga, dll). |
+| `bookings`     | Menyimpan semua data form pemesanan yang dibuat pengguna. |
+| `payments`     | Menyimpan data pembayaran dengan pilihan QRIZ dan Cash. |
 
 ### Tabel Role & Permission
 
@@ -112,9 +110,8 @@ Tabel-tabel ini digunakan untuk mengelola hak akses pengguna secara dinamis. Str
 
 Keamanan adalah prioritas utama dalam proyek ini, diimplementasikan di beberapa lapisan, baik di sisi backend maupun frontend untuk memastikan integritas dan kerahasiaan data.
 
----
 
-### 🛡️ Bagian Backend (Benteng Pertahanan Utama)
+### Bagian Backend (pengolahan data dan keamanan)
 
 Lapisan backend bertindak sebagai pertahanan inti yang memvalidasi setiap permintaan dan melindungi data.
 
@@ -143,9 +140,7 @@ Lapisan backend bertindak sebagai pertahanan inti yang memvalidasi setiap permin
     -   **Implementasi**: Menggunakan **Eloquent ORM** yang secara otomatis melakukan *parameter binding* (anti-SQL Injection) dan properti `$fillable` atau `$guarded` pada model untuk proteksi *Mass Assignment*.
     -   **Lokasi Kode**: Di semua model Eloquent, contohnya `app/Models/Booking.php`.
 
----
-
-### 🚪 Bagian Frontend (Gerbang Pertama)
+### Bagian Frontend (Tampilan)
 
 Lapisan frontend bertanggung jawab untuk mengelola sesi pengguna dan menjaga akses halaman.
 
@@ -158,3 +153,21 @@ Lapisan frontend bertanggung jawab untuk mengelola sesi pengguna dan menjaga aks
     -   **Fungsi**: Mencegah pengguna yang belum login mengakses halaman-halaman yang memerlukan otentikasi (misalnya, *dashboard* admin).
     -   **Implementasi**: Script JavaScript akan mengecek keberadaan token di `localStorage` sebelum memuat konten halaman. Jika token tidak ada, pengguna akan diarahkan kembali ke halaman login.
     -   **Lokasi Kode**: Contohnya di `public/adminpage/js/adminreservasi.js` atau script sejenis.
+
+---
+## ⚙️ Instalasi
+
+1. **Download XAMPP (Untuk running MySQL)**
+2. **Download Composer**
+   -   Install Composer sama saja dengan menginstall laravel, Download Versi Laravel sesuai Kebutuhan.
+   -   Link Panduan Download : https://santrikoding.com/tutorial-laravel-11-2-cara-install-dan-menjalankan-laravel-11 
+4. **Download Gitbash**
+5. **Clone repository:**
+   ```bash
+git clone https://github.com/username/nama-repo.git
+   ```
+3.  **Perlindungan Halaman (Route Guarding)**
+4.  **Perlindungan Halaman (Route Guarding)**
+5.  **Perlindungan Halaman (Route Guarding)**
+6.  **Perlindungan Halaman (Route Guarding)**
+7.  **Perlindungan Halaman (Route Guarding)**
