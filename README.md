@@ -53,7 +53,10 @@ Sistem ini terdiri dari:
   - Fitur pembayaran QRIZ untuk menyimpan gambar belum berhasil
   - fitur QRIZ tidak terhubung ke api getway dari QRIZ sendiri
   - Dasboard admin belum terhubung ke backend
-  - Fitur menampilkan sisa kamar belum terhubung, tinggal membuat logika kan mengambil id dari tabel
+  - Fitur menampilkan sisa kamar tinggal membuat logikanya
+  - admin page finansial belum ada tampilan nya
+  - masih ada sedikit bug di admin form add booking
+  - 
 
 ---
 
@@ -61,16 +64,39 @@ Sistem ini terdiri dari:
 ```bash
 
 .
-├── app/
-│   ├── Http/
-│   │   ├── Controllers/Api/      # Controller API(Semua Logika API)
-│   │   └── Middleware/           # Middleware otentikasi & otorisasi
-│   ├── Models/                   # Eloquent Models (Penghubung Relasi Antar Tabel)
-├── routes/
-│   └── api.php                    # Route backend API(Request HTTP)
-├── database/migrations/           # CREATE Tabel 
-├── .env                           # Konfigurasi proyek
-└── README.md
+├── backend/                          # Proyek Laravel (RESTful API)
+│   ├── app/
+│   │   ├── Http/
+│   │   │   ├── Controllers/Api/      # Controller API
+│   │   │   └── Middleware/           # Middleware otentikasi & otorisasi
+│   │   ├── Models/                   # Eloquent Models
+│   ├── bootstrap/cache/app.php       # Konfigurasi cache termasuk CORS
+│   ├── config/                       # File konfigurasi Laravel
+│   ├── routes/
+│   │   └── api.php                   # Route backend API (tanpa web.php)
+│   ├── database/
+│   │   ├── migrations/               # Struktur tabel & relasi database
+│   │   └── seeders/                   # Seeder data awal (villa, role, permission)
+│   ├── public/                        # Folder publik (CSS, JS, gambar)
+│   ├── storage/app/public/            # Penyimpanan gambar untuk diakses publik
+│   ├── .env                           # Konfigurasi environment
+│   └── composer.json                  # Dependensi Laravel
+│
+|
+├── frontend/                       # Proyek Frontend terpisah
+|   ├── adminpage/                  # File admin
+|   |     ├── CSS/                  # file css admin
+|   |     ├── js/                   # file js admin backend dan UI 
+|   |     ├── layout/               # html admin
+|   |     └── indexadmin.html       # halaman utama admin/ dasboard
+│   └── img/                        # Gambar, ikon, dll.
+│   ├── css/                        # File CSS
+│   ├── js/api/                     # File JavaScript Logika UI dan backend
+│   │   └── api.js                  # Koneksi ke backend API
+│   ├──includes/                    # file html
+|   └──  scss                       # bootstrap        
+└── index.html                      # Halaman utama 
+
 ```
 ---
 
