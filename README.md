@@ -15,16 +15,14 @@ Sistem ini memungkinkan pengguna melakukan pemesanan online untuk 3 tipe villa, 
 - [Instalasi](#instalasi)
 - [Cara Menjalankan](#cara-menjalankan)
 - [Koneksi Backend & Frontend](#koneksi-backend--frontend)
-- [Panduan Kontribusi](#panduan-kontribusi)
-- [Lisensi](#lisensi)
 
 ---
 
 ## 📖 Tentang Proyek
 Sistem ini terdiri dari:
-- **Backend**: Laravel RESTful API untuk mengelola data villa, pemesanan, pembayaran, user, role, dan permission.
-- **Frontend**: Laravel Blade Template untuk halaman pemesanan.
-- **Keamanan**: Token-based Authentication, Role-based Authorization, dan validasi input.
+- **Backend:** Laravel 11 RESTful API untuk mengelola data villa, pemesanan, pembayaran, user, role, permission dan admin.
+- **Frontend:** Aplikasi terpisah berbasis HTML, CSS, dan JavaScript yang berkomunikasi dengan backend melalui endpoint API.
+- **Keamanan:** Token-based Authentication, Role-based Authorization, validasi input, dan proteksi CORS untuk komunikasi aman antara frontend dan backend.
 
 ---
 
@@ -35,7 +33,7 @@ Sistem ini terdiri dari:
 - **Auth**: Laravel Sanctum / Passport (Token-based)
 - **Keamanan Data**: Validation, Password Hashing, Anti-SQL Injection
 - **Version Control**: Git & GitHub
-- **Editor**: VsCode
+- **Editor**: VSCode
 
 ---
 
@@ -49,7 +47,13 @@ Sistem ini terdiri dari:
 - Token-based Authentication untuk API.
 - Validasi input untuk mencegah data berbahaya masuk.
 - CRUD pengelolaan Data Booking Admin
-- Update harga Villa dari Admin 
+- Update harga Villa dari Admin
+
+  #### Note:
+  - Fitur pembayaran QRIZ untuk menyimpan gambar belum berhasil
+  - fitur QRIZ tidak terhubung ke api getway dari QRIZ sendiri
+  - Dasboard admin belum terhubung ke backend
+  - Fitur menampilkan sisa kamar belum terhubung, tinggal membuat logika kan mengambil id dari tabel
 
 ---
 
@@ -181,12 +185,14 @@ DB_PASSWORD=
 ```
 
 7.  **Generate key Laravel:**
-   **Fungsi:** Membuat dan mengisi nilai APP_KEY di file .env Laravel dengan application key yang baru.
+
+**Fungsi:** Membuat dan mengisi nilai APP_KEY di file .env Laravel dengan application key yang baru.
     Perintah Git Bash:
  ```bash
 php artisan key:generate
 ```
 8.  **Jalankan migrasi & seeder:**
+
 Membuat/Update struktur database lalu langsung mengisi data awalnya dalam satu perintah.
  ```bash
 php artisan migrate --seed
@@ -215,3 +221,16 @@ php artisan serve --host=ip_lokal_anda --port=8000
 ---
 
 ## 🔗 Koneksi Backend & Frontend
+
+1. **Buka File Frontend**
+2. **Cari File api.js untuk mengsetting URL API**
+Lokasi nya berada di `/js/api/api.js`. Edit bagian tersebut, Ganti URL Server yang berdalan/IP local anda
+ ```bash
+const API_URL = "http://ip_local:8000/api";
+```
+Edit juga fi file
+- `/js/api/pemiliihan-kamar-ebony.js`
+- `/js/auth-status.js`
+- `/js/pesanan.js`
+- `/adminpage/js` ganti semua url di dalam file adminpage juga
+4. selanjutnyaa running frontend 
